@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UM SPA - Philadelphia</title>
+    <meta name="description" content="Best Massage and Spa in Philadelphia. Relax and unwind at UM SPA.">
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --primary-color: #ff4081; /* Pink Accent */
+            --gold-color: #d4af37;     /* Luxury Gold */
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-light: #f0f0f0;
+            --text-gray: #aaaaaa;
+            --success: #4caf50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--gold-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-color), #f50057);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Hero Section (Updated) --- */
+        .hero {
+            height: 60vh; /* Reduced height slightly since image is gone */
+            /* Removed background image, used sleek dark gradient */
+            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--gold-color); /* Changed to Gold to pop against dark bg */
+            text-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        /* --- Introduction Sections (New) --- */
+        .intro-section {
+            padding: 60px 0;
+            background-color: #181818;
+            border-bottom: 1px solid #222;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+        }
+        
+        .intro-text p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- Girls/Staff Section --- */
+        .staff-section { padding: 80px 0; background-color: var(--bg-dark); }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .staff-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+
+        .staff-card:hover { transform: translateY(-10px); }
+
+        .card-image {
+            width: 100%;
+            height: 600px; /* INCREASED HEIGHT FOR PORTRAIT PHOTOS */
+            object-fit: cover;
+            object-position: top;
+            background-color: #333;
+        }
+
+        .card-info { padding: 20px; text-align: center; }
+
+        .card-info h3 {
+            font-size: 1.5rem;
+            color: var(--gold-color);
+            margin-bottom: 5px;
+        }
+
+        .card-info .age {
+            display: inline-block;
+            background: #333;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background-color: rgba(255, 64, 129, 0.1);
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        /* --- Services/Pricing --- */
+        .services-section {
+            padding: 80px 0;
+            background-color: #181818;
+        }
+
+        .pricing-table {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold-color);
+            transition: 0.3s;
+        }
+
+        .price-row:hover { background: #2a2a2a; }
+
+        .price-row.premium {
+            border-left: 4px solid var(--primary-color);
+            background: linear-gradient(to right, #251e22, #1e1e1e);
+        }
+
+        .service-details h4 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .service-details p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold-color);
+            min-width: 100px;
+            text-align: right;
+        }
+
+        .emoji-divider { text-align: center; font-size: 1.5rem; margin: 20px 0; opacity: 0.7; }
+
+        /* --- Info & Payments --- */
+        .info-section {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-box {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            height: 100%;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .info-icon { font-size: 1.2rem; color: var(--gold-color); margin-top: 3px; }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pay-badge {
+            background: #333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            border: 1px solid #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 250px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+            .price-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .price-tag { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">UM SPA</div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#staff">Girls</a>
+                <a href="#services">Services</a>
+                <a href="#info">Contact</a>
+                <a href="tel:+12158686621" style="color:var(--primary-color);">(215) 868-6621</a>
+            </nav>
+            <div class="mobile-menu-btn" onclick="alert('Please scroll down for info')">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero (Background Image Removed) -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Relax & Rejuvenate</h1>
+            <p>1116 Buttonwood Street, Philadelphia, PA 19123</p>
+            <div style="margin-bottom: 20px; font-weight: bold; color: var(--gold-color);">
+                OPEN: 9:00 AM - 12:30 AM
+            </div>
+            <!-- Updated Phone Format -->
+            <a href="tel:+12158686621" class="btn">Call (215) 868-6621</a>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Who We Are & Why Choose Us -->
+    <section id="about" class="intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <!-- Who We Are -->
+                <div class="intro-text">
+                    <h2>Who We Are</h2>
+                    <p>
+                        Welcome to <strong>UM SPA</strong>, Philadelphia's premier destination for relaxation and stress relief. Located conveniently on Buttonwood Street, we offer a sanctuary away from the hustle and bustle of daily life.
+                    </p>
+                    <p>
+                        Our team provides top-tier Asian massage and bodywork services designed to revitalize your body and mind. Whether you need a quick break or a full hour of indulgence, we are here to serve you with care and professionalism.
+                    </p>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div>
+                    <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 20px; text-align: center;">Why Choose Us</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">✨</span>
+                            <h4>Clean & Safe</h4>
+                            <p style="font-size: 0.85rem; color: #888;">Immaculate private rooms</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">💆‍♀️</span>
+                            <h4>Skilled Staff</h4>
+                            <p style="font-size: 0.85rem; color: #888;">Experienced & friendly</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🚿</span>
+                            <h4>Luxury Amenities</h4>
+                            <p style="font-size: 0.85rem; color: #888;">Table showers available</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📍</span>
+                            <h4>Great Location</h4>
+                            <p style="font-size: 0.85rem; color: #888;">Easy access in Philly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="staff-section">
+        <div class="container">
+            <h2 class="section-title">Our Ladies</h2>
+            <div class="staff-grid">
+                
+                <!-- Girl 1 -->
+                <div class="staff-card">
+                    <img src="1.jpg" alt="Luisana" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Luisana+Image+Missing'">
+                    <div class="card-info">
+                        <h3>Luisana <span class="age">22</span></h3>
+                        <div class="tags">
+                            <span class="tag">69</span>
+                            <span class="tag">Shower</span>
+                            <span class="tag">BBBJ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Girl 2 -->
+                <div class="staff-card">
+                    <img src="2.jpg" alt="Michel" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Michel+Image+Missing'">
+                    <div class="card-info">
+                        <h3>Michel <span class="age">26</span></h3>
+                        <div class="tags">
+                            <span class="tag">69</span>
+                            <span class="tag">Shower</span>
+                            <span class="tag">BBBJ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Girl 3 -->
+                <div class="staff-card">
+                    <img src="3.jpg" alt="Ruby" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Ruby+Image+Missing'">
+                    <div class="card-info">
+                        <h3>Ruby <span class="age">29</span></h3>
+                        <div class="tags">
+                            <span class="tag">69</span>
+                            <span class="tag">Shower</span>
+                            <span class="tag">BBBJ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Service & Pricing</h2>
+            <div class="emoji-divider">🌹🌹🌹</div>
+            
+            <div class="pricing-table">
+                <!-- 30 Mins -->
+                <div class="price-row">
+                    <div class="service-details">
+                        <h4>Quick Relaxation</h4>
+                        <p>Duration: 30 Minutes</p>
+                    </div>
+                    <div class="price-tag">$150</div>
+                </div>
+
+                <!-- 45 Mins -->
+                <div class="price-row">
+                    <div class="service-details">
+                        <h4>Standard Session</h4>
+                        <p>Duration: 45 Minutes</p>
+                        <p style="color: var(--primary-color); font-size: 0.85rem;">Full Service + Table Shower + Massage</p>
+                    </div>
+                    <div class="price-tag">$160</div>
+                </div>
+
+                <div class="emoji-divider">🌸🌸🌸</div>
+
+                <!-- 60 Mins (VIP) -->
+                <div class="price-row premium">
+                    <div class="service-details">
+                        <h4>VIP Experience</h4>
+                        <p>Duration: 1 Hour</p>
+                        <p style="color: #fff; font-size: 0.85rem; margin-top:5px;">
+                            Full Service + BBBJ (Oral w/o condom) + Runu Shower + 69 + Massage + BJ
+                        </p>
+                    </div>
+                    <div class="price-tag">$200</div>
+                </div>
+            </div>
+            
+            <div class="emoji-divider">🌹🌹🌹</div>
+        </div>
+    </section>
+
+    <!-- Info Section with MAP -->
+    <section id="info" class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                
+                <!-- Contact Info & Map -->
+                <div class="info-box">
+                    <h3 style="color:white; margin-bottom:20px;">Visit Us</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <strong>Address:</strong><br>
+                            1116 Buttonwood Street,<br>Philadelphia, PA 19123
+                        </div>
+                    </div>
+
+                    <!-- Embed Map -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=1116+Buttonwood+Street,+Philadelphia,+PA+19123&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="info-item" style="margin-top: 20px;">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            <!-- Updated Phone Format -->
+                            <a href="tel:+12158686621" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">(215) 868-6621</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <div>
+                            <strong>Business Hours:</strong><br>
+                            9:00 AM - 12:30 AM (Daily)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments -->
+                <div class="info-box">
+                    <h3 style="color:white; margin-bottom:20px;">We Accept</h3>
+                    <div class="payment-methods">
+                        <div class="pay-badge">💵 Cash</div>
+                        <div class="pay-badge">📱 Zelle</div>
+                        <div class="pay-badge">💸 Cash App</div>
+                        <div class="pay-badge">🍏 Apple Pay</div>
+                        <div class="pay-badge">💳 Credit Card</div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">
+                        Secure and discreet payments available.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 UM SPA Philadelphia. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
