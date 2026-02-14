@@ -151,7 +151,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            align-items: center;
+            align-items: flex-start; /* Changed to flex-start for text alignment */
         }
 
         .intro-text h2 {
@@ -166,26 +166,35 @@
             color: var(--text-gray);
             margin-bottom: 15px;
             font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* New Why Choose Us Styles */
+        .why-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .why-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .why-list li::before {
+            content: '🌹';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-color);
+            font-size: 1rem;
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
+            display: none; /* Hidden as requested to change layout */
         }
 
         /* --- Girls/Staff Section --- */
@@ -424,38 +433,35 @@
                 <div class="intro-text">
                     <h2>Who We Are</h2>
                     <p>
-                        Welcome to <strong>UM SPA</strong>, Philadelphia's premier destination for relaxation and stress relief. Located conveniently on Buttonwood Street, we offer a sanctuary away from the hustle and bustle of daily life.
+                        <strong>UM SPA</strong> Is An All-In-One "Asian Fusion Men's Super Club" With Specialty On Elite Companionship & Nuru Massage & Men's SPA. We Have At Least 9 Professional Angels At Single Place Lineup For You To Choose From.
                     </p>
                     <p>
-                        Our team provides top-tier Asian massage and bodywork services designed to revitalize your body and mind. Whether you need a quick break or a full hour of indulgence, we are here to serve you with care and professionalism.
+                        All Strictly Selected Beauty Pros Are Rotated By Shift Every Week, They Come From Different Countries All Over The World - "Asian" + "European" + "Latino" + "American Domestic" + "Mix Blood"! We're Committed To Develop The Best Companionship & Nuru Massage Techniques & Men's Prostate Health Spa Skills. We're Dedicated To Interpret The Best Fusion Culture Into The Fabulous Way!
                     </p>
                 </div>
 
                 <!-- Why Choose Us -->
                 <div>
                     <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 20px; text-align: center;">Why Choose Us</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <span class="feature-icon">✨</span>
-                            <h4>Clean & Safe</h4>
-                            <p style="font-size: 0.85rem; color: #888;">Immaculate private rooms</p>
-                        </div>
-                        <div class="feature-card">
-                            <span class="feature-icon">💆‍♀️</span>
-                            <h4>Skilled Staff</h4>
-                            <p style="font-size: 0.85rem; color: #888;">Experienced & friendly</p>
-                        </div>
-                        <div class="feature-card">
-                            <span class="feature-icon">🚿</span>
-                            <h4>Luxury Amenities</h4>
-                            <p style="font-size: 0.85rem; color: #888;">Table showers available</p>
-                        </div>
-                        <div class="feature-card">
-                            <span class="feature-icon">📍</span>
-                            <h4>Great Location</h4>
-                            <p style="font-size: 0.85rem; color: #888;">Easy access in Philly</p>
-                        </div>
-                    </div>
+                    
+                    <p style="margin-bottom: 15px; color: #fff; font-style: italic; text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                        Dedication Of Samurai Spirit ( Bushido Culture ) Coming Along With "UM SPA" As Always! This Is The Highest State Of Service In The World! No Others Can Be Mentioned In The Same Breath!
+                    </p>
+
+                    <ul class="why-list">
+                        <li>
+                            At Here, You’ll Get The Most Choices Of High-End & Up-Scale Talented Angels, Which You’ll Never Be Able To Get So Many Great Choices Of Hotties From Other Regular Places In Philadelphia!
+                        </li>
+                        <li>
+                            We Change New Angels Very Frequently! That Means All UM SPA Angels Will Be Replaced With Brand New Ones In Just Few Days! You Will Get The Freshest And Newest Ones For Sure!
+                        </li>
+                        <li>
+                            At Here, We Prepare Five Race Groups Of The Selected Angels! Not Boring Any More! The Taste Is Being Diversified! We Offer “Asian Group”; “Hispanic Group”; “European Group”; “American Domestic Group”; "Mix Blood Group".
+                        </li>
+                        <li>
+                            Our Place Is The Only One “Fictitious Land Of Peace” In Philadelphia! No Bothering! No Interference! No Hurry! No Concern! Feel like Timeless & Spaceless! All You Need To Do Is ENJOY!
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -498,6 +504,19 @@
                     <img src="3.jpg" alt="Ruby" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Ruby+Image+Missing'">
                     <div class="card-info">
                         <h3>Ruby <span class="age">29</span></h3>
+                        <div class="tags">
+                            <span class="tag">69</span>
+                            <span class="tag">Shower</span>
+                            <span class="tag">BBBJ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Girl 4 (Added Anna) -->
+                <div class="staff-card">
+                    <img src="4.jpg" alt="Anna" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Anna+Image+Missing'">
+                    <div class="card-info">
+                        <h3>Anna <span class="age">20</span></h3>
                         <div class="tags">
                             <span class="tag">69</span>
                             <span class="tag">Shower</span>
