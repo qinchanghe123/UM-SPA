@@ -225,6 +225,45 @@
             background-color: #333;
         }
 
+        /* --- Carousel Styles --- */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background-color: #333;
+        }
+        .carousel-inner {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .carousel-img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 2;
+        }
+        .carousel-control:hover {
+            background: var(--primary-color);
+        }
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+
         .card-info { padding: 20px; text-align: center; }
 
         .card-info h3 {
@@ -486,11 +525,19 @@
                     </div>
                 </div>
 
-                <!-- Girl 2 -->
+                <!-- Girl 2 (Replaced Michel with Mia + Carousel) -->
                 <div class="staff-card">
-                    <img src="2.jpg" alt="Michel" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Michel+Image+Missing'">
+                    <div class="carousel">
+                        <div class="carousel-inner" id="mia-carousel">
+                            <img src="21.jpg" alt="Mia 1" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+21'">
+                            <img src="22.jpg" alt="Mia 2" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+22'">
+                            <img src="23.jpg" alt="Mia 3" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+23'">
+                        </div>
+                        <button class="carousel-control prev" onclick="moveSlide('mia-carousel', -1)">&#10094;</button>
+                        <button class="carousel-control next" onclick="moveSlide('mia-carousel', 1)">&#10095;</button>
+                    </div>
                     <div class="card-info">
-                        <h3>Michel <span class="age">26</span></h3>
+                        <h3>Mia <span class="age">20</span></h3>
                         <div class="tags">
                             <span class="tag">69</span>
                             <span class="tag">Shower</span>
@@ -642,6 +689,28 @@
             <p>&copy; 2024 UM SPA Philadelphia. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Carousel logic
+        const carousels = {};
+        
+        function moveSlide(carouselId, step) {
+            const inner = document.getElementById(carouselId);
+            if (!carousels[carouselId]) {
+                carousels[carouselId] = { index: 0, total: inner.children.length };
+            }
+            
+            let data = carousels[carouselId];
+            data.index += step;
+            
+            // Loop back or forward
+            if (data.index >= data.total) data.index = 0;
+            if (data.index < 0) data.index = data.total - 1;
+            
+            inner.style.transform = `translateX(-${data.index * 100}%)`;
+        }
+    </script>
 
 </body>
 </html>
