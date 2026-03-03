@@ -516,7 +516,7 @@
                 <div class="staff-card">
                     <img src="1.jpg" alt="Luisana" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Luisana+Image+Missing'">
                     <div class="card-info">
-                        <h3>Luisana <span class="age">22</span></h3>
+                        <h3>Luisana <span class="age">21</span></h3>
                         <div class="tags">
                             <span class="tag">69</span>
                             <span class="tag">Shower</span>
@@ -559,11 +559,18 @@
                     </div>
                 </div>
 
-                <!-- Girl 4 (Added Anna) -->
+                <!-- Girl 4 (Replaced Anna with NANA + Carousel) -->
                 <div class="staff-card">
-                    <img src="4.jpg" alt="Anna" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Anna+Image+Missing'">
+                    <div class="carousel">
+                        <div class="carousel-inner" id="nana-carousel">
+                            <img src="41.jpg" alt="NANA 1" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=NANA+41'">
+                            <img src="42.jpg" alt="NANA 2" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=NANA+42'">
+                        </div>
+                        <button class="carousel-control prev" onclick="moveSlide('nana-carousel', -1)">&#10094;</button>
+                        <button class="carousel-control next" onclick="moveSlide('nana-carousel', 1)">&#10095;</button>
+                    </div>
                     <div class="card-info">
-                        <h3>Anna <span class="age">20</span></h3>
+                        <h3>NANA <span class="age">25</span></h3>
                         <div class="tags">
                             <span class="tag">69</span>
                             <span class="tag">Shower</span>
@@ -697,6 +704,7 @@
         
         function moveSlide(carouselId, step) {
             const inner = document.getElementById(carouselId);
+            if (!inner) return;
             if (!carousels[carouselId]) {
                 carousels[carouselId] = { index: 0, total: inner.children.length };
             }
@@ -710,6 +718,16 @@
             
             inner.style.transform = `translateX(-${data.index * 100}%)`;
         }
+
+        // Auto-play all carousels every 3 seconds (3000ms)
+        setInterval(() => {
+            const carouselElements = document.querySelectorAll('.carousel-inner');
+            carouselElements.forEach(inner => {
+                if (inner.id) {
+                    moveSlide(inner.id, 1);
+                }
+            });
+        }, 3000);
     </script>
 
 </body>
