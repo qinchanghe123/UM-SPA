@@ -8,8 +8,8 @@
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
-            --primary-color: #ff4081; /* Pink Accent */
-            --gold-color: #d4af37;     /* Luxury Gold */
+            --primary-color: #ff4081;
+            --gold-color: #d4af37;
             --bg-dark: #121212;
             --bg-card: #1e1e1e;
             --text-light: #f0f0f0;
@@ -31,8 +31,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
 
         /* --- Utilities --- */
         .container {
@@ -71,6 +78,7 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
         }
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
@@ -110,14 +118,20 @@
             text-transform: uppercase;
             color: var(--text-light);
         }
-        .nav-links a:hover { color: var(--primary-color); }
 
-        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-        /* --- Hero Section (Updated) --- */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
         .hero {
-            height: 60vh; /* Reduced height slightly since image is gone */
-            /* Removed background image, used sleek dark gradient */
+            height: 60vh;
             background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
             display: flex;
             align-items: center;
@@ -130,7 +144,7 @@
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--gold-color); /* Changed to Gold to pop against dark bg */
+            color: var(--gold-color);
             text-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3);
         }
 
@@ -140,7 +154,7 @@
             color: #ddd;
         }
 
-        /* --- Introduction Sections (New) --- */
+        /* --- Introduction Sections --- */
         .intro-section {
             padding: 60px 0;
             background-color: #181818;
@@ -151,7 +165,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            align-items: flex-start; /* Changed to flex-start for text alignment */
+            align-items: flex-start;
         }
 
         .intro-text h2 {
@@ -169,12 +183,12 @@
             text-align: justify;
         }
 
-        /* New Why Choose Us Styles */
         .why-list {
             list-style: none;
             padding: 0;
             margin-top: 20px;
         }
+
         .why-list li {
             position: relative;
             padding-left: 30px;
@@ -184,6 +198,7 @@
             line-height: 1.5;
             text-align: justify;
         }
+
         .why-list li::before {
             content: '🌹';
             position: absolute;
@@ -194,109 +209,46 @@
         }
 
         .features-grid {
-            display: none; /* Hidden as requested to change layout */
+            display: none;
         }
 
-        /* --- Girls/Staff Section --- */
-        .staff-section { padding: 80px 0; background-color: var(--bg-dark); }
-        
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* --- Girls/Staff Section: Waterfall Layout --- */
+        .staff-section {
+            padding: 80px 0;
+            background-color: var(--bg-dark);
         }
 
-        .staff-card {
+        .staff-masonry {
+            column-count: 3;
+            column-gap: 24px;
+        }
+
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin: 0 0 24px;
             background-color: var(--bg-card);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
             border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
         }
 
-        .staff-card:hover { transform: translateY(-10px); }
+        .masonry-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+        }
 
-        .card-image {
+        .masonry-item img {
+            display: block;
             width: 100%;
-            height: 600px; /* INCREASED HEIGHT FOR PORTRAIT PHOTOS */
+            height: auto;
             object-fit: cover;
-            object-position: top;
             background-color: #333;
-        }
-
-        /* --- Carousel Styles --- */
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            background-color: #333;
-        }
-        .carousel-inner {
-            display: flex;
-            height: 100%;
-            transition: transform 0.4s ease-in-out;
-        }
-        .carousel-img {
-            min-width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px 15px;
-            font-size: 18px;
-            border-radius: 50%;
-            transition: 0.3s;
-            z-index: 2;
-        }
-        .carousel-control:hover {
-            background: var(--primary-color);
-        }
-        .carousel-control.prev { left: 10px; }
-        .carousel-control.next { right: 10px; }
-
-        .card-info { padding: 20px; text-align: center; }
-
-        .card-info h3 {
-            font-size: 1.5rem;
-            color: var(--gold-color);
-            margin-bottom: 5px;
-        }
-
-        .card-info .age {
-            display: inline-block;
-            background: #333;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .tag {
-            background-color: rgba(255, 64, 129, 0.1);
-            color: var(--primary-color);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            border: 1px solid var(--primary-color);
         }
 
         /* --- Services/Pricing --- */
@@ -322,7 +274,9 @@
             transition: 0.3s;
         }
 
-        .price-row:hover { background: #2a2a2a; }
+        .price-row:hover {
+            background: #2a2a2a;
+        }
 
         .price-row.premium {
             border-left: 4px solid var(--primary-color);
@@ -348,7 +302,12 @@
             text-align: right;
         }
 
-        .emoji-divider { text-align: center; font-size: 1.5rem; margin: 20px 0; opacity: 0.7; }
+        .emoji-divider {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            opacity: 0.7;
+        }
 
         /* --- Info & Payments --- */
         .info-section {
@@ -376,7 +335,11 @@
             gap: 15px;
         }
         
-        .info-icon { font-size: 1.2rem; color: var(--gold-color); margin-top: 3px; }
+        .info-icon {
+            font-size: 1.2rem;
+            color: var(--gold-color);
+            margin-top: 3px;
+        }
 
         .payment-methods {
             display: flex;
@@ -396,7 +359,6 @@
             gap: 8px;
         }
         
-        /* Map Container */
         .map-container {
             width: 100%;
             height: 250px;
@@ -422,15 +384,54 @@
             border-top: 1px solid #222;
         }
 
-        /* --- Mobile Responsive --- */
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .staff-masonry {
+                column-count: 2;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-menu-btn { display: block; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .info-grid { grid-template-columns: 1fr; }
-            .intro-grid { grid-template-columns: 1fr; gap: 30px; }
-            .price-row { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .price-tag { text-align: left; }
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .price-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .price-tag {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .staff-masonry {
+                column-count: 1;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -451,7 +452,7 @@
         </div>
     </header>
 
-    <!-- Hero (Background Image Removed) -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container hero-content">
             <h1>Relax & Rejuvenate</h1>
@@ -459,16 +460,14 @@
             <div style="margin-bottom: 20px; font-weight: bold; color: var(--gold-color);">
                 OPEN: 9:00 AM - 12:30 AM
             </div>
-            <!-- Updated Phone Format -->
             <a href="tel:+12158686621" class="btn">Call (215) 868-6621</a>
         </div>
     </section>
 
-    <!-- NEW SECTION: Who We Are & Why Choose Us -->
+    <!-- Who We Are & Why Choose Us -->
     <section id="about" class="intro-section">
         <div class="container">
             <div class="intro-grid">
-                <!-- Who We Are -->
                 <div class="intro-text">
                     <h2>Who We Are</h2>
                     <p>
@@ -479,7 +478,6 @@
                     </p>
                 </div>
 
-                <!-- Why Choose Us -->
                 <div>
                     <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 20px; text-align: center;">Why Choose Us</h2>
                     
@@ -506,79 +504,39 @@
         </div>
     </section>
 
-    <!-- Staff Section -->
+    <!-- Staff Section / Only Image Waterfall -->
     <section id="staff" class="staff-section">
         <div class="container">
             <h2 class="section-title">Our Ladies</h2>
-            <div class="staff-grid">
-                
-                <!-- Girl 1 -->
-                <div class="staff-card">
-                    <img src="11.jpg" alt="Luisana" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Luisana+Image+Missing'">
-                    <div class="card-info">
-                        <h3>Luisana <span class="age">21</span></h3>
-                        <div class="tags">
-                            <span class="tag">69</span>
-                            <span class="tag">Shower</span>
-                            <span class="tag">BBBJ</span>
-                        </div>
-                    </div>
+
+            <div class="staff-masonry">
+                <div class="masonry-item">
+                    <img src="t11.jpg" alt="Our Ladies 1" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t11.jpg+Missing'">
                 </div>
 
-                <!-- Girl 2 (Replaced Michel with Mia + Carousel) -->
-                <div class="staff-card">
-                    <div class="carousel">
-                        <div class="carousel-inner" id="mia-carousel">
-                            <img src="21.jpg" alt="Mia 1" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+21'">
-                            <img src="22.jpg" alt="Mia 2" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+22'">
-                            <img src="23.jpg" alt="Mia 3" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=Mia+23'">
-                        </div>
-                        <button class="carousel-control prev" onclick="moveSlide('mia-carousel', -1)">&#10094;</button>
-                        <button class="carousel-control next" onclick="moveSlide('mia-carousel', 1)">&#10095;</button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Mia <span class="age">20</span></h3>
-                        <div class="tags">
-                            <span class="tag">69</span>
-                            <span class="tag">Shower</span>
-                            <span class="tag">BBBJ</span>
-                        </div>
-                    </div>
+                <div class="masonry-item">
+                    <img src="t12.jpg" alt="Our Ladies 2" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t12.jpg+Missing'">
                 </div>
 
-                <!-- Girl 3 -->
-                <div class="staff-card">
-                    <img src="3.jpg" alt="Ruby" class="card-image" onerror="this.src='https://via.placeholder.com/400x500/333/fff?text=Ruby+Image+Missing'">
-                    <div class="card-info">
-                        <h3>Ruby <span class="age">29</span></h3>
-                        <div class="tags">
-                            <span class="tag">69</span>
-                            <span class="tag">Shower</span>
-                            <span class="tag">BBBJ</span>
-                        </div>
-                    </div>
+                <div class="masonry-item">
+                    <img src="t13.jpg" alt="Our Ladies 3" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t13.jpg+Missing'">
                 </div>
 
-                <!-- Girl 4 (Replaced Anna with NANA + Carousel) -->
-                <div class="staff-card">
-                    <div class="carousel">
-                        <div class="carousel-inner" id="nana-carousel">
-                            <img src="41.jpg" alt="NANA 1" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=NANA+41'">
-                            <img src="42.jpg" alt="NANA 2" class="carousel-img" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=NANA+42'">
-                        </div>
-                        <button class="carousel-control prev" onclick="moveSlide('nana-carousel', -1)">&#10094;</button>
-                        <button class="carousel-control next" onclick="moveSlide('nana-carousel', 1)">&#10095;</button>
-                    </div>
-                    <div class="card-info">
-                        <h3>NANA <span class="age">25</span></h3>
-                        <div class="tags">
-                            <span class="tag">69</span>
-                            <span class="tag">Shower</span>
-                            <span class="tag">BBBJ</span>
-                        </div>
-                    </div>
+                <div class="masonry-item">
+                    <img src="t21.jpg" alt="Our Ladies 4" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t21.jpg+Missing'">
                 </div>
 
+                <div class="masonry-item">
+                    <img src="t22.jpg" alt="Our Ladies 5" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t22.jpg+Missing'">
+                </div>
+
+                <div class="masonry-item">
+                    <img src="t23.jpg" alt="Our Ladies 6" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t23.jpg+Missing'">
+                </div>
+
+                <div class="masonry-item">
+                    <img src="t24.jpg" alt="Our Ladies 7" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t24.jpg+Missing'">
+                </div>
             </div>
         </div>
     </section>
@@ -590,7 +548,6 @@
             <div class="emoji-divider">🌹🌹🌹</div>
             
             <div class="pricing-table">
-                <!-- 30 Mins -->
                 <div class="price-row">
                     <div class="service-details">
                         <h4>Quick Relaxation</h4>
@@ -599,7 +556,6 @@
                     <div class="price-tag">$150</div>
                 </div>
 
-                <!-- 45 Mins -->
                 <div class="price-row">
                     <div class="service-details">
                         <h4>Standard Session</h4>
@@ -611,7 +567,6 @@
 
                 <div class="emoji-divider">🌸🌸🌸</div>
 
-                <!-- 60 Mins (VIP) -->
                 <div class="price-row premium">
                     <div class="service-details">
                         <h4>VIP Experience</h4>
@@ -633,7 +588,6 @@
         <div class="container">
             <div class="info-grid">
                 
-                <!-- Contact Info & Map -->
                 <div class="info-box">
                     <h3 style="color:white; margin-bottom:20px;">Visit Us</h3>
                     
@@ -645,7 +599,6 @@
                         </div>
                     </div>
 
-                    <!-- Embed Map -->
                     <div class="map-container">
                         <iframe 
                             src="https://maps.google.com/maps?q=1116+Buttonwood+Street,+Philadelphia,+PA+19123&t=&z=15&ie=UTF8&iwloc=&output=embed" 
@@ -657,7 +610,6 @@
                         <div class="info-icon">📞</div>
                         <div>
                             <strong>Phone:</strong><br>
-                            <!-- Updated Phone Format -->
                             <a href="tel:+12158686621" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">(215) 868-6621</a>
                         </div>
                     </div>
@@ -666,12 +618,11 @@
                         <div class="info-icon">🕒</div>
                         <div>
                             <strong>Business Hours:</strong><br>
-                            9:00 AM - 12:30 AM (Daily)
+                            9:00 AM - 12:30 AM Daily
                         </div>
                     </div>
                 </div>
 
-                <!-- Payments -->
                 <div class="info-box">
                     <h3 style="color:white; margin-bottom:20px;">We Accept</h3>
                     <div class="payment-methods">
@@ -696,39 +647,6 @@
             <p>&copy; 2024 UM SPA Philadelphia. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Carousel logic
-        const carousels = {};
-        
-        function moveSlide(carouselId, step) {
-            const inner = document.getElementById(carouselId);
-            if (!inner) return;
-            if (!carousels[carouselId]) {
-                carousels[carouselId] = { index: 0, total: inner.children.length };
-            }
-            
-            let data = carousels[carouselId];
-            data.index += step;
-            
-            // Loop back or forward
-            if (data.index >= data.total) data.index = 0;
-            if (data.index < 0) data.index = data.total - 1;
-            
-            inner.style.transform = `translateX(-${data.index * 100}%)`;
-        }
-
-        // Auto-play all carousels every 3 seconds (3000ms)
-        setInterval(() => {
-            const carouselElements = document.querySelectorAll('.carousel-inner');
-            carouselElements.forEach(inner => {
-                if (inner.id) {
-                    moveSlide(inner.id, 1);
-                }
-            });
-        }, 3000);
-    </script>
 
 </body>
 </html>
