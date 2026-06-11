@@ -212,41 +212,44 @@
             display: none;
         }
 
-        /* --- Girls/Staff Section: Waterfall Layout --- */
+        /* --- Our Ladies Section: 3 images in one row --- */
         .staff-section {
             padding: 80px 0;
             background-color: var(--bg-dark);
         }
 
-        .staff-masonry {
-            column-count: 3;
-            column-gap: 24px;
+        .staff-row-wrapper {
+            width: 100%;
+            overflow-x: auto;
         }
 
-        .masonry-item {
-            display: inline-block;
-            width: 100%;
-            margin: 0 0 24px;
+        .staff-row {
+            display: flex;
+            gap: 24px;
+            flex-wrap: nowrap;
+            align-items: stretch;
+        }
+
+        .staff-card {
+            flex: 1 1 0;
+            min-width: 0;
             background-color: var(--bg-card);
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid #333;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
-            break-inside: avoid;
-            -webkit-column-break-inside: avoid;
-            page-break-inside: avoid;
         }
 
-        .masonry-item:hover {
+        .staff-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 14px 36px rgba(0,0,0,0.45);
         }
 
-        .masonry-item img {
+        .staff-card img {
             display: block;
             width: 100%;
-            height: auto;
+            height: 420px;
             object-fit: cover;
             background-color: #333;
         }
@@ -385,12 +388,6 @@
         }
 
         /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .staff-masonry {
-                column-count: 2;
-            }
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -422,15 +419,27 @@
             .price-tag {
                 text-align: left;
             }
+
+            .staff-row {
+                min-width: 760px;
+            }
+
+            .staff-card img {
+                height: 360px;
+            }
         }
 
         @media (max-width: 560px) {
-            .staff-masonry {
-                column-count: 1;
-            }
-
             .section-title {
                 font-size: 2rem;
+            }
+
+            .staff-row {
+                min-width: 720px;
+            }
+
+            .staff-card img {
+                height: 320px;
             }
         }
     </style>
@@ -504,38 +513,28 @@
         </div>
     </section>
 
-    <!-- Staff Section / Only Image Waterfall -->
+    <!-- Staff Section / 3 Images Same Row -->
     <section id="staff" class="staff-section">
         <div class="container">
             <h2 class="section-title">Our Ladies</h2>
 
-            <div class="staff-masonry">
-                <div class="masonry-item">
-                    <img src="t11.jpg" alt="Our Ladies 1" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t11.jpg+Missing'">
-                </div>
+            <div class="staff-row-wrapper">
+                <div class="staff-row">
+                    <div class="staff-card">
+                        <img src="f1.jpg" alt="Our Ladies 1" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f1.jpg+Missing'">
+                    </div>
 
-                <div class="masonry-item">
-                    <img src="t12.jpg" alt="Our Ladies 2" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t12.jpg+Missing'">
-                </div>
+                    <div class="staff-card">
+                        <img src="f2.jpg" alt="Our Ladies 2" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f2.jpg+Missing'">
+                    </div>
 
-                <div class="masonry-item">
-                    <img src="t13.jpg" alt="Our Ladies 3" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t13.jpg+Missing'">
-                </div>
+                    <div class="staff-card">
+                        <img src="f3.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f3.jpg+Missing'">
+                    </div>
 
-                <div class="masonry-item">
-                    <img src="t21.jpg" alt="Our Ladies 4" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t21.jpg+Missing'">
-                </div>
-
-                <div class="masonry-item">
-                    <img src="t22.jpg" alt="Our Ladies 5" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t22.jpg+Missing'">
-                </div>
-
-                <div class="masonry-item">
-                    <img src="t23.jpg" alt="Our Ladies 6" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t23.jpg+Missing'">
-                </div>
-
-                <div class="masonry-item">
-                    <img src="t24.jpg" alt="Our Ladies 7" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=t24.jpg+Missing'">
+                     <div class="staff-card">
+                        <img src="f4.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f4.jpg+Missing'">
+                    </div>
                 </div>
             </div>
         </div>
