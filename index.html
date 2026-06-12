@@ -212,10 +212,17 @@
             display: none;
         }
 
-        /* --- Our Ladies Section: 3 images in one row --- */
+        /* --- Our Ladies Section: two rows of images --- */
         .staff-section {
             padding: 80px 0;
             background-color: var(--bg-dark);
+        }
+
+        .staff-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
         }
 
         .staff-row-wrapper {
@@ -230,8 +237,15 @@
             align-items: stretch;
         }
 
+        .staff-row.three .staff-card {
+            flex: 1 1 33.333%;
+        }
+
+        .staff-row.four .staff-card {
+            flex: 1 1 25%;
+        }
+
         .staff-card {
-            flex: 1 1 0;
             min-width: 0;
             background-color: var(--bg-card);
             border-radius: 15px;
@@ -420,8 +434,12 @@
                 text-align: left;
             }
 
-            .staff-row {
+            .staff-row.three {
                 min-width: 760px;
+            }
+
+            .staff-row.four {
+                min-width: 960px;
             }
 
             .staff-card img {
@@ -434,8 +452,12 @@
                 font-size: 2rem;
             }
 
-            .staff-row {
+            .staff-row.three {
                 min-width: 720px;
+            }
+
+            .staff-row.four {
+                min-width: 900px;
             }
 
             .staff-card img {
@@ -513,45 +535,51 @@
         </div>
     </section>
 
-    <!-- Staff Section / 3 Images Same Row -->
+    <!-- Staff Section / Images Same Row -->
     <section id="staff" class="staff-section">
         <div class="container">
             <h2 class="section-title">Our Ladies</h2>
 
-            <div class="staff-row-wrapper">
-                <div class="staff-row">
-                    <div class="staff-card">
-                        <img src="f1.jpg" alt="Our Ladies 1" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f1.jpg+Missing'">
-                    </div>
+            <div class="staff-gallery">
 
-                    <div class="staff-card">
-                        <img src="f2.jpg" alt="Our Ladies 2" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f2.jpg+Missing'">
-                    </div>
+                <!-- 第一行：3 张图片 -->
+                <div class="staff-row-wrapper">
+                    <div class="staff-row three">
+                        <div class="staff-card">
+                            <img src="f1.jpg" alt="Our Ladies 1" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f1.jpg+Missing'">
+                        </div>
 
-                    <div class="staff-card">
-                        <img src="f3.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f3.jpg+Missing'">
-                    </div>
+                        <div class="staff-card">
+                            <img src="f2.jpg" alt="Our Ladies 2" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f2.jpg+Missing'">
+                        </div>
 
-                     <div class="staff-card">
-                        <img src="f4.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f4.jpg+Missing'">
+                        <div class="staff-card">
+                            <img src="f3.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f3.jpg+Missing'">
+                        </div>
                     </div>
                 </div>
-                <div class="staff-card">
-                        <img src="f5.jpg" alt="Our Ladies 1" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f1.jpg+Missing'">
-                    </div>
 
-                    <div class="staff-card">
-                        <img src="f6.jpg" alt="Our Ladies 2" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f2.jpg+Missing'">
-                    </div>
+                <!-- 第二行：4 张图片 -->
+                <div class="staff-row-wrapper">
+                    <div class="staff-row four">
+                        <div class="staff-card">
+                            <img src="f5.jpg" alt="Our Ladies 5" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f5.jpg+Missing'">
+                        </div>
 
-                    <div class="staff-card">
-                        <img src="f7.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f3.jpg+Missing'">
-                    </div>
+                        <div class="staff-card">
+                            <img src="f6.jpg" alt="Our Ladies 6" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f6.jpg+Missing'">
+                        </div>
 
-                     <div class="staff-card">
-                        <img src="f8.jpg" alt="Our Ladies 3" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f4.jpg+Missing'">
+                        <div class="staff-card">
+                            <img src="f7.jpg" alt="Our Ladies 7" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f7.jpg+Missing'">
+                        </div>
+
+                        <div class="staff-card">
+                            <img src="f8.jpg" alt="Our Ladies 8" loading="lazy" onerror="this.src='https://via.placeholder.com/400x600/333/fff?text=f8.jpg+Missing'">
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
